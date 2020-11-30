@@ -4,11 +4,12 @@
 #include "Wire.h"
 
 #define DHTTYPE DHT11
+#define DHTPIN 55
 
 Adafruit_seesaw stemma1;
 Adafruit_seesaw stemma2;
 Adafruit_ADS1115 adc;
-DHT dht(1, DHTTYPE);
+DHT dht(DHTPIN, DHTTYPE);
 
 void setup() {
   Serial.begin(9600);
