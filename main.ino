@@ -4,6 +4,7 @@
 
 Adafruit_seesaw stemma1;
 Adafruit_seesaw stemma2;
+Adafruit_ADS1115 adc;
 
 void setup() {
   Serial.begin(115200);
@@ -12,12 +13,20 @@ void setup() {
 }
 
 void loop() {
+  int16_t adc0, adc1, adc2, adc3;
+ 
   float temp1 = stemma1.getTemp();
   uint16_t moist1 = stemma1.touchRead(0);
   float temp2 = stemma2.getTemp();
   uint16_t moist2 = stemma2.touchRead(0);
+  light = adc.readADC_SingleEnded(0);
+  humidity = adc.readADC_SingleEnded(1);
 
-  Serial.print("Temperature: "); Serial.print(tempC); Serial.println("*C");
-  Serial.print("Capacitive: "); Serial.println(capread);
+  Serial.print("Temperature (1): "); Serial.print(temp1); Serial.println("C");
+  Serial.print("Capacitive (1): "); Serial.println(moist1);
+  Serial.print("Temperature (2): "); Serial.print(temp2); Serial.println("C");
+  Serial.print("Capacitive (2): "); Serial.println(moist2);
+  Serial.print("Light: "); Serial.println(light);
+  Serial.print("Humidity: "); Serial.println(humidity);
   delay(100);
 }
