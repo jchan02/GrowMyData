@@ -20,13 +20,11 @@ void setup() {
 }
 
 void loop() {
-  int16_t adc0, adc1, adc2, adc3;
- 
   float temp1 = stemma1.getTemp();
   uint16_t moist1 = stemma1.touchRead(0);
   float temp2 = stemma2.getTemp();
   uint16_t moist2 = stemma2.touchRead(0);
-  light = adc.readADC_SingleEnded(0);
+  int16_t light = adc.readADC_SingleEnded(0);
   float humidity = dht.readHumidity();
 
   Serial.print("Temperature (1): "); Serial.print(temp1); Serial.println("C");
